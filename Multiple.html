@@ -17,6 +17,15 @@
 </head>
 
 <body>
+<button id="startBtn">Start AR</button>
+
+<script>
+document.querySelector("#startBtn").addEventListener("click", async () => {
+  const sceneEl = document.querySelector("a-scene");
+  await sceneEl.systems["mindar-image-system"].start();
+  document.querySelector("#startBtn").style.display = "none";
+});
+</script>
 
 <a-scene
   mindar-image="imageTargetSrc: new.mind;"
