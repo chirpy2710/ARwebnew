@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
-  <title>MindAR Two Targets Working</title>
+  <meta charset="utf-8">
+  <title>MindAR Two Image Targets</title>
 
-  <!-- A-Frame -->
-  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
-
-  <!-- MindAR -->
-  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+  <!-- A-Frame and MindAR -->
+  <script src="aframe.min.js"></script>
+  <script src="mindar-image-aframe.prod.js"></script>
 
   <style>
-    body { margin: 0; overflow: hidden; }
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
   </style>
 </head>
 
 <body>
 
 <a-scene
-  mindar-image="imageTargetSrc: new.mind; autoStart: true; uiScanning: true; uiLoading: true;"
-  color-space="sRGB"
-  renderer="colorManagement: true, physicallyCorrectLights"
-  vr-mode-ui="enabled: false"
-  device-orientation-permission-ui="enabled: false">
+  mindar-image="imageTargetSrc: new.mind;"
+  vr-mode-ui="false"
+  device-orientation-permission-ui="false">
+ 
 
-  <!-- Assets -->
+  <!-- Load both GLB models -->
   <a-assets>
     <a-asset-item id="model1" src="model.glb"></a-asset-item>
     <a-asset-item id="model2" src="Nike.glb"></a-asset-item>
@@ -33,27 +33,23 @@
   <!-- Camera -->
   <a-camera position="0 0 0" look-controls="false"></a-camera>
 
-  <!-- Light (important for GLB visibility) -->
-  <a-light type="ambient" intensity="1"></a-light>
-  <a-light type="directional" position="0 1 0" intensity="0.5"></a-light>
-
-  <!-- Target 0 -->
+  <!-- 🔹 Image Target 1 → model.glb -->
   <a-entity mindar-image-target="targetIndex: 0">
     <a-entity
       gltf-model="#model1"
       position="0 0 0"
-      rotation="0 0 0"
-      scale="0.3 0.3 0.3">
+      rotation="90 0 0"
+      scale="0.15 0.15 0.15">
     </a-entity>
   </a-entity>
 
-  <!-- Target 1 -->
+  <!-- 🔹 Image Target 2 → Nike.glb -->
   <a-entity mindar-image-target="targetIndex: 1">
     <a-entity
       gltf-model="#model2"
       position="0 0 0"
-      rotation="0 0 0"
-      scale="0.3 0.3 0.3">
+      rotation="90 0 0"
+      scale="4 4 4">
     </a-entity>
   </a-entity>
 
